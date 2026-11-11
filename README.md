@@ -85,6 +85,20 @@ The interactive dashboard contains four main pages:
 - Current vs predicted price comparison
 - Farmer advisory insights
 
+### 📸 Dashboard Preview
+
+**1. Overview Dashboard**
+![Overview Dashboard](Overview.png)
+
+**2. Market Analysis**
+![Market Analysis](Market_Analysis.png)
+
+**3. Crop Analysis**
+![Crop Analysis](Crop_Analysis.png)
+
+**4. Price Prediction**
+![Price Prediction](Prediction.png)
+
 ## 🤖 Machine Learning
 
 The project uses the Random Forest Regressor algorithm to predict future crop prices.
