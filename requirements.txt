@@ -1,0 +1,11 @@
+Flask
+flask-cors
+SQLAlchemy
+mysql-connector-python
+pandas
+numpy
+scikit-learn
+requests
+selenium
+matplotlib
+seaborn
