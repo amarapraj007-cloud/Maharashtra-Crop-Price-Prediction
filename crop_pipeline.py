@@ -1,3 +1,4 @@
+
 """
 =====================================================
 🌾 MAHARASHTRA CROP PRICE PREDICTION DASHBOARD
@@ -15,8 +16,15 @@ RUN: python crop_pipeline.py
 # =====================================================
 # CONFIG
 # =====================================================
-MYSQL_PASSWORD = "1234"    # <-- तुमचा MySQL password इथे टाका!
+import os
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+if not MYSQL_PASSWORD:
+    raise RuntimeError("MYSQL_PASSWORD environment variable is not set")
 
+DB_URL = (
+    f"mysql+mysqlconnector://root:{MYSQL_PASSWORD}"
+    "@localhost:3306/crop_price_db"
+)
 # =====================================================
 # INSTALL REQUIRED PACKAGES
 # =====================================================
@@ -87,7 +95,8 @@ MARKETS = [
 ]
 DAYS_OF_HISTORY = 180
 RANDOM_SEED = 42
-DB_URL = f"mysql+mysqlconnector://root:{MYSQL_PASSWORD}@127.0.0.1:3306/crop_price_db"
+import os
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
 
 # =====================================================
 # STEP 1: DATA GENERATION
@@ -459,7 +468,7 @@ def step5_store_to_mysql():
         print("\n💡 Check:")
         print("   1. MySQL running?")
         print("   2. crop_price_db database created?")
-        print(f"   3. Password '{MYSQL_PASSWORD}' correct?")
+        print("  3. Check whether MySQL credentials are correct.")
         return False
     
     # Store crop prices

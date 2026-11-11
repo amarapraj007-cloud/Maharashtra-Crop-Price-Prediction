@@ -2,14 +2,18 @@ from flask import Flask, request, jsonify, render_template_string
 from flask_cors import CORS
 from sqlalchemy import create_engine, text
 import pymysql
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# MySQL Config - Tumcha password 1234
-DB_URL = "mysql+mysqlconnector://root:1234@127.0.0.1:3306/crop_price_db"
-engine = create_engine(DB_URL)
+# MySQL Configuration
+DB_URL = os.getenv("DATABASE_URL")
 
+if not DB_URL:
+    raise RuntimeError("DATABASE_URL environment variable is not set")
+engine = create_engine(DB_URL)
+	
 # Marathi-English Mix Registration Form HTML
 HTML_FORM = """
 <!DOCTYPE html>
@@ -77,7 +81,7 @@ HTML_FORM = """
         <button type="submit">✅ नोंदणी करा / Register</button>
     </form>
     <div id="msg" class="msg"></div>
-    <p style="text-align:center; margin-top:15px; font-size:12px; color:#888;">Maharashtra Crop Price Prediction | Daily 8 AM Alerts | ML 97.5% Accuracy</p>
+    <p style="text-align:center; margin-top:15px; font-size:12px; color:#888;">Maharashtra Crop Price Prediction | 7-Day Price Forecast | Farmer Advisory</p>
 </div>
 <script>
 document.getElementById('regForm').onsubmit = async (e) => {

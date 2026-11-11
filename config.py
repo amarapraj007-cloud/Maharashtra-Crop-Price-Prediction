@@ -9,14 +9,14 @@ CONFIG FILE — सगळ्या settings इथे आहेत
 # =====================================================
 # DATABASE CONFIG — MySQL Connection
 # =====================================================
+import os
 DB_CONFIG = {
     "host": "localhost",
     "user": "root",
-    "password": "your_password",      # ← तुमचा MySQL password टाका
+    "password": os.getenv("MYSQL_PASSWORD", ""),
     "database": "crop_price_db",
     "port": 3306
 }
-
 # SQLAlchemy connection string
 DB_URL = f"mysql+mysqlconnector://{DB_CONFIG['user']}:{DB_CONFIG['password']}@{DB_CONFIG['host']}:{DB_CONFIG['port']}/{DB_CONFIG['database']}"
 
@@ -97,7 +97,7 @@ MODEL_CONFIG = {
 # =====================================================
 EMAIL_CONFIG = {
     "sender_email": "your_email@gmail.com",
-    "sender_password": "your_app_password",    # Gmail App Password
+    "sender_password": os.getenv("GMAIL_APP_PASSWORD", ""),    # Gmail App Password
     "smtp_server": "smtp.gmail.com",
     "smtp_port": 587,
     "recipient_email": "recipient_email@gmail.com",
