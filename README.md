@@ -137,6 +137,40 @@ These figures describe the generated project dataset and its processing workflow
 - Cloud-based deployment and automation.
 - Marathi AI-powered farmer assistance using LLM and RAG.
 
+## 🚀 Project Setup
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/amarapraj007-cloud/Maharashtra-Crop-Price-Prediction.git
+cd Maharashtra-Crop-Price-Prediction
+
+python -m venv venv
+venv\Scripts\activate
+
+pip install -r requirements.txt
+
+### 4. Configure MySQL
+
+- Install MySQL Server.
+- Create a database named `crop_price_db`.
+- Set the required environment variables.
+
+### 5. Run the Project
+
+Run the prediction pipeline:
+
+```bash
+python crop_pipeline.py
+```
+
+Run the Farmer Registration Portal:
+
+```bash
+python app.py
+```
+
+
 ## 👨‍💻 Author
 
 **Amar Dipak Apraj**
